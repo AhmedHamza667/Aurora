@@ -3,7 +3,7 @@
     padding: 0;
   } */
   
-  /* @keyframes scrollUpAnimation {
+  @keyframes scrollUpAnimation {
     from {
       transform: translateY(100%);
       opacity: 0;
@@ -12,14 +12,14 @@
       transform: translateY(0); 
       opacity: 1;
     }
-  } */
+  }
   
-  /* .scrollUpAnimation {
+  .scrollUpAnimation {
     animation: scrollUpAnimation 1s ease-out;
-  } */
+  }
     
 
-  /* @keyframes scrollDownAnimation {
+  @keyframes scrollDownAnimation {
     from {
       transform: translateY(-100%); 
       opacity: 0;
@@ -28,11 +28,11 @@
       transform: translateY(0);
       opacity: 1;
     }
-  } */
+  }
   
-  /* .scrollDownAnimation {
+  .scrollDownAnimation {
     animation: scrollDownAnimation 1s ease-out;
-  } */
+  }
 /*         
   .logOutDiv{
     background-color: rgba(212, 212, 212, .05);

@@ -93,7 +93,7 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <div className="dashboard">
+    <div className="dashboard scrollUpAnimation">
       <div className="dash-header">
         <div className="dash-header-left"></div>
         <div className="dash-header-mid">
