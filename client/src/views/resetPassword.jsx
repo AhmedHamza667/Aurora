@@ -36,10 +36,11 @@ export default function ResetPassword() {
     <div className="auth-container">
       
 
-      {error && <p>{error}</p>}
 
       <form onSubmit={handleSubmit} className="auth-form">
       <h1>Reset Password</h1>
+      {error && <p>{error}</p>}
+
         <TextField
             sx={{
               backgroundColor: "rgba(217, 217, 217, 0.20)",
