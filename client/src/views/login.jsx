@@ -38,10 +38,11 @@ export default function LogIn() {
     <div className="login">
       <HomeNB />
       <div className="auth-container">
+     
+      <form onSubmit={handleLogIn} className="auth-form">
       {errorMessage && (
         <p style={{ color: "rgba(245, 245, 245)" }}>{errorMessage}</p>
       )}
-      <form onSubmit={handleLogIn} className="auth-form">
         <h1>Log In</h1>
         <TextField
           sx={{
