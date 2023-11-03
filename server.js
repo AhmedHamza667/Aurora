@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
-const port = 4000;
+const PORT = process.env.PORT || 4000;
+const path = require("path");
 const session = require("express-session");
-require("dotenv").config();
+//require("dotenv").config();
 const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const openAIRoutes = require("./routes/openAIRoutes");
@@ -11,6 +12,10 @@ const quizRoutes = require("./routes/quizRoutes");
 const attemptRoutes = require("./routes/attemptRoutes");
 const submissionRoutes = require("./routes/submissionRoutes");
 
+const env = process.env.NODE_ENV || "development";
+if (env === "development") {
+  require("dotenv").config();
+}
 const {
   validationErrorHandler,
   duplicateErrorHandler,
@@ -52,9 +57,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/", (req, res) => {
-  res.send("Aurora");
-});
 
 // Routes
 app.use("/api/auth", authRoutes);
@@ -76,7 +78,11 @@ app.use((err, req, res, next) => {
   res.status(500).send("Something broke!");
   next();
 });
+app.use(express.static(path.join(__dirname, "client/dist")));
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/dist", "index.html"));
+});
+app.listen(PORT, () => {
+  console.log(`Server is running at http://localhost:${PORT}`);
 });

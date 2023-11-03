@@ -124,11 +124,11 @@ async function regenerateQuestion(req, res) {
   const openai = new OpenAIApi(configuration);
 
   const regenerationPrompt = question.questionType === 0
-    ? `Generate a new multiple choice question about ${quiz.category}. Include 4 choices. Do this in JSON format.
-    Don't specify option choice e.g a)`
-    : `Generate a new true/false question about ${quiz.category}. Do this in JSON format.
-    Don't specify option choice e.g a)`;
-
+  ? `Generate a new multiple choice question about ${quiz.category}. Include full question, full answer choices.
+  Choices are limited to 4. Do this in JSON format.
+  Omit letter choice e.g a).`
+  : `Generate a new true/false question about ${quiz.category}. Do this in JSON format.`;
+  
   try {
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
@@ -146,7 +146,6 @@ async function regenerateQuestion(req, res) {
 
     console.log('New text:', newText);
 
-    // Assuming the OpenAI API returns the question, choices, and correct answer in a specific format
     const regeneratedQuestion = JSON.parse(newText);
 
     console.log('Regenerated question object:', regeneratedQuestion);

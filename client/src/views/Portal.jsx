@@ -640,7 +640,7 @@ export default function Portal() {
                 {/* <div className="true-false"> */}
                 <Button
                   variant="outlined"
-                  onClick={() => handleSubmission(1)}
+                  onClick={() => handleSubmission(index)}
                   disableRipple
                   // disabled={score !== null}
                   sx={{
